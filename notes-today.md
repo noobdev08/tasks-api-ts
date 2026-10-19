@@ -1,6 +1,6 @@
 ### What I did today
 - Built a /health endpoint that returns JSON
-- (add the array, Two Sum etc. here only AFTER you actually do them)
+- Added GET '/todos' with arra of tasks
 
 ### What confused me
 - npx commands for setup (npm installs, npx runs a tool)
