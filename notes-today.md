@@ -1,15 +1,18 @@
+# 19th October 2026
+
 ### What I did today
+
 - Built a /health endpoint that returns JSON
-- Added GET '/todos' with arra of tasks
+- Added GET '/todos' with array of tasks
+- Learnt big O time complexity patterns for types, e.g constant(doesnt change regardless of size), linear(as size grows, work increases), quadratic(mostly nested loops), logarithmic(half discarded)
+- Glance at two sum problem but didnt do it cuz elvis was burnt out and confused
 
 ### What confused me
+
 - npx commands for setup (npm installs, npx runs a tool)
 
 ### Tomorrow
+
 - POST /tasks with express.json(), test both
 
-
-**Tonight(With Elvis Optional):**
-1. Learn Big-O from a source you pick, capped at 20 minutes.
-2. Solve Two Sum from blank in Python, brute force first, then the dict version, and tell me the Big-O of each.
-3. Update your notes file with what you actually did and what confused you, then commit and push it.
+# 20th October 2026
