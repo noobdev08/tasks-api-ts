@@ -1,6 +1,8 @@
 import express = require("express");
 
 const app = express();
+app.use(express.json());
+
 const todo = [{ id: 1, task: "Build health endpoint" }, { id: 2, task: "Display array of tasks on '/tasks' endpoint"}];
 
 app.get("/health", (req, res) => {
@@ -8,7 +10,15 @@ app.get("/health", (req, res) => {
 });
 
 app.get('/tasks', (req, res) => {
-  res.json(todo);
+  res.status(200).json(todo);
+})
+
+app.post('/tasks', (req, res) => {
+  const title = req.body.title;
+  const tag = todo.length + 1;
+  const newItem = { id: tag, task: title};
+  todo.push(newItem);
+  res.status(201).json(newItem);
 })
 
 app.listen(3000, () => {
