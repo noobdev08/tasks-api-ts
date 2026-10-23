@@ -37,3 +37,25 @@
 - Check if Elvis is keeping up so we can do two sum together
 - POST with no body, an empty {}, or a bad title returns 400 with a clear message, saves nothing, and never crashes the server.
 - Test all three cases in Thunder Client and save them as separate requests, so you can rerun them whenever you change the route.
+
+# 23rd October 2026
+
+### What I did today
+
+- Added validation for POST '/tasks' (missing body, missing title, empty title, whitespace-only title, non-string title all return 400)
+- Tested all six cases and all work now
+- Learnt that .trim() only works on strings
+- Learnt that you can't read a property from something that might be undefined: with no body, `req.body.title` crashes because `req.body` itself is undefined
+- Learnt optional chaining (?.): `req.body?.title` returns undefined instead of throwing
+- Learnt that the order of checks matters: undefined first, then string, then empty after trimming
+
+### What confused me
+
+- How to send an error message without JSON | Fix: res.send() sends plain text (res.json() sends a JSON object)
+- Why the empty body test wasn't working | Fix: the crash happened on `req.body.title` before my check could run, because I was checking whether the title was undefined when the missing thing was req.body. Using `req.body?.title` fixed it
+
+### Tomorrow
+
+- Rewrite the POST checks with Zod so all six cases still pass
+- Finish the faster Two Sum in JavaScript and log it (name, pattern, date, result, hint or not), with the joint session with Elvis
+- Friday DSA: moved to Saturday
