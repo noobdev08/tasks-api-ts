@@ -1,9 +1,15 @@
-import express = require("express");
+import express from 'express';
+import * as z from 'zod';
 
 const app = express();
 app.use(express.json());
 
 const todo = [{ id: 1, task: "Build health endpoint" }, { id: 2, task: "Display array of tasks on '/tasks' endpoint" }];
+
+// Schema
+const TodoSchema = z.object({
+  title: z.string().trim().nonempty(),
+})
 
 app.get("/health", (req, res) => {
   res.json({ status: "ok" });
@@ -14,22 +20,17 @@ app.get('/tasks', (req, res) => {
 })
 
 app.post('/tasks', (req, res) => {
-  const rawText = req.body?.title;
-  if (typeof rawText === "undefined") {
-    res.status(400).send('Invalid Input | Empty Body');
-    return;
-  } else if (typeof rawText !== "string") {
-    res.status(400).send('Enter Valid Data Type | String');
-    return;
-  } else if (rawText.trim() === "") {
-    res.status(400).send('Invalid Input | Enter Proper text');
-    return;
-  } else {
-    const title = rawText.trim();
+  const result = TodoSchema.safeParse(req.body);
+  if (result.success) {
+    const title = result.data.title;
     const tag = todo.length + 1;
     const newItem = { id: tag, task: title };
     todo.push(newItem);
     res.status(201).json(newItem);
+    return
+  } else {
+    res.status(400).send(result.error.message);
+    return;
   }
 })
 

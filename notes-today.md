@@ -59,3 +59,26 @@
 - Rewrite the POST checks with Zod so all six cases still pass
 - Finish the faster Two Sum in JavaScript and log it (name, pattern, date, result, hint or not), with the joint session with Elvis
 - Friday DSA: moved to Saturday
+
+
+# 28th October 2026
+
+### What I did today
+
+- Added validation for POST '/tasks' using Zod
+- Tested all six cases and all work now
+- Learnt that zod uses safeParse() with success, data and error properties
+- Learnt that defining a schema uses z.object({}) for comparisons 
+
+### What confused me
+
+- What parts of the input to compare | Concluded the req.body
+- How to use get result from safeParse | Copilot completed with .success condidtion and i read doc to understand it fully
+
+### Tomorrow
+
+- Add `DELETE /tasks/:id` to tasks-api-ts. Done when:
+  - `DELETE /tasks/1` removes the task and returns a clear success response
+  - `DELETE /tasks/999` returns `404` and changes nothing
+  - `DELETE /tasks/abc` returns the status I decided on, and I can say why
+  - `GET /tasks` afterwards shows the task gone, and a new POST doesn't reuse an existing id
