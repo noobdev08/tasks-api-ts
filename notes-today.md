@@ -82,3 +82,14 @@
   - `DELETE /tasks/999` returns `404` and changes nothing
   - `DELETE /tasks/abc` returns the status I decided on, and I can say why
   - `GET /tasks` afterwards shows the task gone, and a new POST doesn't reuse an existing id
+
+# 29th October 2026
+
+### What I did today
+
+
+### What confused me
+
+
+### Tomorrow
+

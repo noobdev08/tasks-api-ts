@@ -23,7 +23,7 @@ app.post('/tasks', (req, res) => {
   const result = TodoSchema.safeParse(req.body);
   if (result.success) {
     const title = result.data.title;
-    const tag = todo.length + 1;
+    const tag = Math.max(0, ...todo.map(task => task.id)) + 1;;
     const newItem = { id: tag, task: title };
     todo.push(newItem);
     res.status(201).json(newItem);
@@ -33,6 +33,26 @@ app.post('/tasks', (req, res) => {
     return;
   }
 })
+
+
+app.delete('/tasks/:id', (req, res) => {
+  const id = Number(req.params.id);
+
+  if (Number.isNaN(id)) {
+    res.status(400).send('Invalid id');
+    return;
+  }
+
+  const position = todo.findIndex(task => task.id === id);
+
+  if (position === -1) {
+    res.status(404).send('Task not found');
+    return;
+  }
+
+  const deleted = todo.splice(position, 1);
+  res.status(200).json(deleted[0]);
+});
 
 app.listen(3000, () => {
   console.log("Server running on http://localhost:3000");
