@@ -83,13 +83,13 @@
   - `DELETE /tasks/abc` returns the status I decided on, and I can say why
   - `GET /tasks` afterwards shows the task gone, and a new POST doesn't reuse an existing id
 
-# 29th October 2026
+# 9th November 2026
 
 ### What I did today
-
+- Wrote DELETE endpoint by hand even though i spied
 
 ### What confused me
-
+- Validation of postion to -1, and NAN
 
 ### Tomorrow
-
+- Extend knowledge
